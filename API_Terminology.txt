@@ -1,0 +1,27 @@
+⨀ What is an API?
+    ✓ API stands for Application Programming Interface. is an interface that allows two applications to communicate with each other.
+    • Think of it like a waiter in a restaurant who takes your order (request) to the kitchen (the application) 
+        ↪ and then brings the food (the response) back to you.
+    
+⨀ Why Are APIs Important?
+    ✓ APIs are everywhere! They allow applications, devices, and websites to interact. For example:
+
+    • Using an app to book a hotel: 
+        ↪ The app sends a request to a hotel booking service API, which responds with available rooms.
+
+    • Logging in with Google/Facebook: 
+        ↪ The app uses an API from Google or Facebook to authenticate your identity.
+
+⨀ Basic Concepts of APIs
+    1. Request and Response
+        ✓ APIs work with two main actions:
+
+        • Request: Your application sends a request to the API to get some information or perform an action.
+        • Response: The API sends a response back, usually containing the data or confirmation that the action was successful.
+
+    2. Endpoints
+        ✓ An endpoint is a specific URL where an API is accessed. 
+            ↪ Each endpoint corresponds to a specific function or resource, like retrieving data about users, products, or making a payment.
+
+        ⁕ Example endpoint:
+            ↪ https://api.example.com/users
