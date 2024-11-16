@@ -121,103 +121,117 @@
                 ↪ Example: /users/{userId}
             • Query Parameters: Added after ? symbol
                 ↪ Example: /users?sort=asc
+⨀ JSON (JavaScript Object Notation)
+    ✓ A lightweight data format for exchanging information
+    ✓ Files use .json extension
     
-    5. JSON File :
-        ✓ JSON stands for (JavaScript Object Notation) is a lightweight data interchange format that is similar to JavaScript objects.
-            ↪ It's commonly used for data exchange between a server and a client, such as a web application and a server.
-            • can be written like this:
+    1. JSON Structure
+        ✓ Basic Syntax:
+            • Key-value pairs
+            • Keys must be strings with double quotes
+            • Values: strings, numbers, arrays, booleans, objects, null
                 ↪ {
-                    "key1": "value1",
-                    "key2": "value2"
+                    "name": "Maria",
+                    "age": 25,
+                    "active": true
                 }
 
-            ✓ Arrays in JSON:
-                ↪ {
-                    "colors": ["red", "green", "blue"]
+        ✓ Arrays:
+            ↪ {
+                "colors": ["red", "green", "blue"]
                 }
 
-            ✓ Nested Objects in JSON:
-                ↪ {
-                    "user": {
-                        "id": 1,
-                        "name": "Ahmed",
-                        "skills": ["Python", "Kotlin"]
+        ✓ Nested Objects:
+            ↪ {
+                "user": {
+                "id": 1,
+                "name": "Ahmed",
+                "skills": ["Python", "Kotlin"]
                     }
-                }
+               }
 
-        3. Usage Examples
-            ✓ Configuration:
-                ↪ {
-                    "appName": "MyApp",
-                    "version": "1.0.0",
-                    "port": 3000
-                }
+    2. Working with JSON
+         ✓ Parse Method (String to Object):
+            ↪ const jsonString = '{"name": "Maria", "age": 25}'
+            ↪ const data = JSON.parse(jsonString)
 
-            ✓ Data Exchange:
-                ↪ {
-                    "id": 123,
-                    "name": "John Doe",
-                    "role": "admin"
-                }
+        ✓ Stringify Method (Object to String):
+            ↪ const data = { name: "Maria", age: 25 }
+            ↪ const jsonString = JSON.stringify(data)
 
-            ✓ Storage:
-                • Local files
-                • Database storage
-                • API responses
+        ✓ Error Handling:
+            ↪ try {
+                const data = JSON.parse(invalidJson)
+                } catch (error) {
+                console.error('Invalid JSON format')
+                }   
 
-        4. Parse Method
-            ✓ Converts JSON string into a usable object
-            * Example:
-                ↪ const jsonString = '{"name": "Maria", "age": 25}'
-                   const data = JSON.parse(jsonString)
-                   console.log(data.name) // Output: Maria
+    3. JSON with APIs
+        ✓ Request Headers:
+            • Content-Type: application/json
+            • Accept: application/json
 
-        5. Stringify Method
-            ✓ Converts an object into JSON string format
-            * Example:
-                ↪ const data = { name: "Maria", age: 25 } // Object
-                   const jsonString = JSON.stringify(data) // Convert to JSON string
-                   console.log(jsonString) // Output: {"name":"Maria","age":25} // JSON string
+        ✓ Common Status Codes:
+            • 200: Successful JSON response
+            • 400: Invalid JSON in request
+            • 415: Unsupported media type
 
-        6. Working Together
-            ✓ Common workflow example:
-                * Receiving API data:
-                    ↪ const apiResponse = '{"user": {"name": "Ahmed", "age": 14}}' // API response
-                       const parsedData = JSON.parse(apiResponse) // Parse the JSON string
-                       console.log(parsedData.user.name) // Access the data, Output: Ahmed 
+        ✓ API Example:
+                ↪ fetch('/api/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: 'Maria' })
+                })
 
-                • Modifying data:
-                    ↪ parsedData.user.age = 15
+    4. Usage Patterns
+        ✓ Configuration Files:
+            ↪ {
+                "appName": "MyApp",
+                "version": "1.0.0",
+                "port": 3000
+               }
 
-                • Sending back to API:
-                    ↪ const updatedData = JSON.stringify(parsedData)
+        ✓ File Operations:
+            • Reading:
+                ↪ const data = fs.readFileSync('data.json', 'utf-8')
+                ↪ const jsonData = JSON.parse(data)
 
-        7. File Operations
-            ✓ Reading JSON:
-                ↪ const fs = require('fs') // Import the File System module
-                   const data = fs.readFileSync('data.json', 'utf-8') // Read the file
-                   const jsonData = JSON.parse(data) // Parse the JSON data
+            • Writing:
+                ↪ fs.writeFileSync('data.json', 
+                   JSON.stringify(newData, null, 2))
 
-            ✓ Writing JSON:
-                ↪ const newData = { task: "Finish project", completed: true }
-                ↪ fs.writeFileSync('data.json', JSON.stringify(newData, null, 2))
+        ✓ Data Exchange:
+            • API Responses
+            • WebSocket Messages
+            • Database Storage
 
-        8. Validation
-            ✓ Tools:
-                • JSONLint
-                • IDE built-in validators
-                • Browser developer tools
-            
-            ✓ Common validation rules:
-                • Proper syntax
-                • No trailing commas
-                • Double quotes for keys
-                • Valid value types
+    5. Validation & Security
+        ✓ Schema Validation:
+            • JSON Schema
+            • Type checking
+            • Required fields
 
-        9. Best Practices
-            ✓ Always validate JSON before parsing
-            ✓ Use proper error handling
-            ✓ Keep JSON structure clean and minimal
-            ✓ Use proper formatting for readability
-            ✓ Use stringify options for better formatting:
+        ✓ Security Practices:
+            • Sanitize JSON input
+            • Validate data types
+            • Set size limits
+            • Use HTTPS for transmission
+
+    6. Best Practices
+        ✓ Structure:
+            • Keep hierarchy shallow
+            • Use consistent naming
+            • Limit array sizes
+
+        ✓ Formatting:
+            • Proper indentation
+            • Use pretty print for readability
+                ↪ JSON.stringify(data, null, 2)
+
+        ✓ Development Tools:
+            • JSONLint for validation
+            • Browser DevTools
+            • Postman for API testing                
                 ↪ JSON.stringify(data, null, 2)                  
